@@ -1,7 +1,6 @@
 <?php
 require_once('authenticate.php');
-session_start();
-session_start();
+//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>

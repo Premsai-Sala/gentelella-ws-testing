@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
-session_start();
+////session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -112,9 +112,9 @@ $uname=$_SESSION["username"];
                       <tbody>
                       <?php
                       $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-                      $t=$_POST['dag'];
-                      $tt=$_POST['day'];
-                      session_start();
+                      $t=@$_POST['dag'];
+                      $tt=@$_POST['day'];
+                      //session_start();
                       /*$result = $con->query("SELECT * FROM issues WHERE created_at >= CAST('2018-11-14' AS DATE) AND created_at <= CAST('2018-11-15' AS DATE)");*/
                       $result = $con->query("SELECT * FROM issues WHERE (created_at BETWEEN '$t' AND '$tt')");
                       while($row1 = $result->fetch_assoc())

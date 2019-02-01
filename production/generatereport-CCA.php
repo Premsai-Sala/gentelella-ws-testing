@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==0)
 {
-session_start();
+//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -225,12 +225,17 @@ $uname=$_SESSION["username"];
                       $connect = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $query1 = "SELECT * FROM users";
                       $usersdata = mysqli_query($connect, $query1);// for method 2
-                      $users = "";
+                      @$users = "";
                       while($row2 = mysqli_fetch_array($usersdata))
                       {
-                          if ($row2[1]==$_POST['userid']) $s="SELECTED"; else $s="";
-                          //$users = $users."<option value=`$row2[0]`>$row2[1]</option>";
-                          $users = $users."<option $s value=$row2[1]>$row2[1]</option>";
+                          if (isset($_POST['userid']))
+                            {
+                              if ($row2[1]==$_POST['userid']) $s="SELECTED"; else $s="";
+                              //$users = $users."<option value=`$row2[0]`>$row2[1]</option>";
+                              $users = $users."<option $s value=$row2[1]>$row2[1]</option>";
+                            }
+                            else
+                              $users = $users."<option value=$row2[1]>$row2[1]</option>";
                       }
                       ?>
 

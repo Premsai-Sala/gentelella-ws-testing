@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==0)
 {
-session_start();
+//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>

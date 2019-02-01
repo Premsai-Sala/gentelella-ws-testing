@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
-session_start();
+//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 /*require_once('authenticate.php');
@@ -16,15 +16,20 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 $query1 = "SELECT * FROM users";
 $usersdata = mysqli_query($connect, $query1);// for method 2
-$users = "";
+@$users = "";
 while($row2 = mysqli_fetch_array($usersdata))
 {
-    if ($row2[1]==$_POST['userid']) $s="SELECTED"; else $s="";
-    //$users = $users."<option value=`$row2[0]`>$row2[1]</option>";
-    $users = $users."<option $s value=$row2[1]>$row2[1]</option>";
+    if (isset($_POST['userid']))
+    {
+      if ($row2[1]==$_POST['userid']) $s="SELECTED"; else $s="";
+      //$users = $users."<option value=`$row2[0]`>$row2[1]</option>";
+      $users = $users."<option $s value=$row2[1]>$row2[1]</option>";
+    }
+    else
+      $users = $users."<option value=$row2[1]>$row2[1]</option>";
 }
 //$query2 = "SELECT * FROM itemtypes";
-$ttt=$_POST['userid'];
+@$ttt=$_POST['userid'];
 $query2 = "SELECT typedesc from itemtypes JOIN items ON itemtypes.id=items.itemtypeid JOIN users ON items.userid=users.id where username=\"$ttt\"";
 $itemdata = mysqli_query($connect, $query2);// for method 2
 $items = "";
@@ -184,7 +189,7 @@ while($row2 = mysqli_fetch_array($admindata))
 
                     </form>
                       <?php
-                      if ($_POST["userid"] != `` && $_POST["itemid"] != `` && $_POST["problem"] != `` && $_POST["userid"] != '0' && $_POST["itemid"] != '0' && $_POST["problem"] != '0') {
+                      if (@$_POST["userid"] != `` && $_POST["itemid"] != `` && $_POST["problem"] != `` && $_POST["userid"] != '0' && $_POST["itemid"] != '0' && $_POST["problem"] != '0') {
                       $row1= $_POST["userid"];
                       $row2= $_POST["itemid"];
                       $row3= $_POST["problem"];
@@ -199,12 +204,12 @@ while($row2 = mysqli_fetch_array($admindata))
                       if($usersdata)
                           {
                             echo("<br>*Ticket raised successfully.");
-                              header("Location: http://localhost/gentelella-ws/production/index.php");
+                              //header("Location: http://localhost/test-ws/production/un-resolved-CCA.php");
                           } 
                           else
                           {
                               echo("<br>*Failed to raise ticket. Please try it after some time.");
-                              header("Location: http://localhost/authenticate/index.php");
+                              //header("Location: http://localhost/authenticate/index.php");
                             }
                       }
                       ?>

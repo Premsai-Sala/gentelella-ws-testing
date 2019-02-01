@@ -2,7 +2,6 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
-session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -115,7 +114,7 @@ $uname=$_SESSION["username"];
                       $t=$_POST['daf'];
                       $tt=$_POST['dat'];
                       $ttt=$_POST['as'];
-                      session_start();
+                      //session_start();
                       /*$result = $con->query("SELECT * FROM issues WHERE created_at >= CAST('2018-11-14' AS DATE) AND created_at <= CAST('2018-11-15' AS DATE)");*/
                       $result = $con->query("SELECT * FROM issues WHERE (created_at BETWEEN '$t' AND '$tt') AND assign='$ttt'");
                       while($row1 = $result->fetch_assoc())

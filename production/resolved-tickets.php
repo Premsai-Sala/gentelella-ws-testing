@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
-session_start();
+//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -112,7 +112,7 @@ $uname=$_SESSION["username"];
                       <tbody>
                       <?php
                       $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-                      session_start();
+                      //session_start();
                       $result = $con->query("SELECT * FROM issues WHERE status=\"Close\"");
                       while($row1 = $result->fetch_assoc())
                       {

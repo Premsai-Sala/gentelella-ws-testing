@@ -2,7 +2,7 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==1)
 {
-session_start();
+//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -90,49 +90,49 @@ $uname=$_SESSION["username"];
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Ticket ID</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <input type="text" style="visibility: hidden; width: 0px;" readonly name="sid" value="<?php echo $_POST['id'];?>"><?php echo $_POST['id']; ?>
+                        <input type="text" style="visibility: hidden; width: 0px;" readonly name="sid" value="<?php echo @$_POST['id'];?>"><?php echo @$_POST['id']; ?>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">User Name</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <input type="text" style="visibility: hidden; width: 0px" readonly value="<?php echo $_POST['unname'];?>"><?php echo $_POST['unname']; ?>
+                        <input type="text" style="visibility: hidden; width: 0px" readonly value="<?php echo @$_POST['unname'];?>"><?php echo @$_POST['unname']; ?>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Item Name</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <input type="text" style="visibility: hidden; width: 0px" readonly value="<?php echo $_POST['itemname'];?>"><?php echo $_POST['itemname']; ?>
+                        <input type="text" style="visibility: hidden; width: 0px" readonly value="<?php echo @$_POST['itemname'];?>"><?php echo @$_POST['itemname']; ?>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Problem</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <input type="text" style="visibility: hidden; width: 0px" readonly value="<?php echo $_POST['problem'];?>"><?php echo $_POST['problem']; ?>
+                        <input type="text" style="visibility: hidden; width: 0px" readonly value="<?php echo @$_POST['problem'];?>"><?php echo @$_POST['problem']; ?>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Comments</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <textarea style="width: 100%; margin-left: 15px"> <?php echo $_POST['comm']; ?> </textarea>
+                        <textarea style="width: 100%; margin-left: 15px"> <?php echo @$_POST['comm']; ?> </textarea>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Assigned To</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <input type="text" style="visibility: hidden; width: 0px" readonly name="sas" value="<?php echo $_POST['as'];?>"><?php echo $_POST['as']; ?>
+                        <input type="text" style="visibility: hidden; width: 0px" readonly name="sas" value="<?php echo @$_POST['as'];?>"><?php echo @$_POST['as']; ?>
                     </div>
                     </div>
 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Priority</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <input type="text" style="visibility: hidden; width: 0px" readonly name="spr" value="<?php echo $_POST['pr'];?>"><?php echo $_POST['pr']; ?>
+                        <input type="text" style="visibility: hidden; width: 0px" readonly name="spr" value="<?php echo @$_POST['pr'];?>"><?php echo @$_POST['pr']; ?>
                     </div>
                     </div>
 
@@ -144,9 +144,9 @@ $uname=$_SESSION["username"];
                     </form>
                     <a href="ticketsraised-TA.php"><button>Back</button></a>
                     <?php
-                    $t=$_POST['sid'];
-                    $tt=$_POST['sas'];
-                    $ttt=$_POST['spr'];
+                    $t=@$_POST['sid'];
+                    $tt=@$_POST['sas'];
+                    $ttt=@$_POST['spr'];
                     if($t!=`` && $tt!=`` && $ttt!=`` && $tt!="SelectTechnician" && $ttt!="SetPriority" )
                     {
                     $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
