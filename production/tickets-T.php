@@ -97,8 +97,8 @@ $uname=$_SESSION["username"];
                         <th>User Name</th>
                         <th>Item Name</th>
                         <th>Problem</th>
-                       <!--  <th>Status</th> -->
                         <th>Description</th>
+                        <th>remark</th>
                         <th>Priority</th>
                         <!-- <th>Assign to</th> -->
                         <th>action</th>
@@ -116,7 +116,7 @@ $uname=$_SESSION["username"];
                       {
                       $admin = $admin."<option value=$row2[1]>$row2[1]</option>";
                       }
-                      $result = $con->query("SELECT * FROM issues WHERE status=\"Open\" AND assign='$uname' AND assign_status=\"1\"");
+                      $result = $con->query("SELECT * FROM issues WHERE status=\"Open\" AND assign='$uname'");
                       while($row1 = $result->fetch_assoc())
                       {
                         ?>
@@ -127,10 +127,11 @@ $uname=$_SESSION["username"];
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="itemname" value="<?php echo $row1['itemid'];?>"><?php echo $row1['itemid']; ?></td>
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="problem" value="<?php echo $row1['problem'];?>"><?php echo $row1['problem'];?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["comm"]?>"><?php echo $row1['comm']?></td>
-                        <!-- <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php //echo $row1["status"]?>"></td> -->
+                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="rmkss" value="<?php echo $row1["remarks"]?>"><?php echo $row1['remarks']?></td>
+                        <!-- <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="rmkss" value="<?php //echo $row1["remarks"]?>"></td> -->
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["priority"]?>"><?php echo $row1['priority']?></td> 
 
-                        <td><input type="submit" name="submit" value="Close"></td>
+                        <td><input class="btn btn-sm btn-round btn-danger" type="submit" name="submit" value="Close"></td>
 
                         </form>
                         </tr>

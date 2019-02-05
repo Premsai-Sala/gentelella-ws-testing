@@ -1,6 +1,6 @@
 <?php
 require_once('authenticate.php');
-if ($_SESSION["designation"]==0)
+if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
 //session_start();
 $des=$_SESSION["designation"];

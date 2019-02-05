@@ -118,7 +118,7 @@ $uname=$_SESSION["username"];
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Comments</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                        <textarea style="width: 100%; margin-left: 15px"> <?php echo @$_POST['comm']; ?> </textarea>
+                        <textarea class="form-control"> <?php echo @$_POST['comm']; ?> </textarea>
                     </div>
                     </div>
 

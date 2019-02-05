@@ -95,10 +95,10 @@ $uname=$_SESSION["username"];
                         <th>Item Name</th>
                         <th>Assign to</th>
                         <th>Priority</th>
-                        <!-- <th>Status</th> -->
                         <th>Raised On</th>
                         <th>Problem</th>
                         <th>Description</th>
+                        <th>Remarks</th>
                         </tr>
                       </thead>
                       <form method="post">
@@ -118,6 +118,7 @@ $uname=$_SESSION["username"];
                       echo "<td>".$row1['created_at']."</td>";
                         echo "<td>".$row1['problem']."</td>";
                         echo "<td>".$row1['comm']."</td>";
+                        echo "<td>".$row1['remarks']."</td>";
                       echo "</tr>";
                       }
                       ?> 

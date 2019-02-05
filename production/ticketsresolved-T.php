@@ -99,7 +99,7 @@ $uname=$_SESSION["username"];
                         <th>Problem</th>
                         <th>Description</th>
                         <th>Resolven On</th>
-                        <th>Priority</th>
+                        <th>Remarks</th>
                         <!-- <th>Assign to</th> -->
                         <!-- <th>action</th> -->
                         </tr>
@@ -128,7 +128,7 @@ $uname=$_SESSION["username"];
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="problem" value="<?php echo $row1['problem'];?>"><?php echo $row1['problem'];?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["comm"]?>"><?php echo $row1['comm']?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["resolved_on"]?>"><?php echo $row1["resolved_on"]?></td>
-                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["priority"]?>"><?php echo $row1['priority']?></td> 
+                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["remarks"]?>"><?php echo $row1['remarks']?></td> 
 
                         <!-- <td><input type="submit" name="submit" value="Close"></td> -->
 

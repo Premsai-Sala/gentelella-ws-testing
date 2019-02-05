@@ -9,6 +9,16 @@ $uname=$_SESSION["username"];
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      function countChar(val) {
+        var len = val.value.length;
+        if (len >= 200) {
+          val.value = val.value.substring(0, 200);
+        } else {
+          $('#charNum').text(200 - len);
+        }
+      };
+    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -63,7 +73,7 @@ $uname=$_SESSION["username"];
 
       <!-- sidebar menu -->
       <?php
-            include 'leftnav-CCA.php';
+            include 'leftnav-T.php';
       ?>
       <!-- /sidebar menu -->
       </div>
@@ -118,7 +128,7 @@ $uname=$_SESSION["username"];
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Comments</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                    	<textarea style="width: 100%; margin-left: 1px"> <?php echo @$_POST['comm']; ?> </textarea>
+                    	<textarea class="form-control readonly=readonly" readonly="readonly"> <?php echo @$_POST['comm']; ?> </textarea>
                     </div>
                     </div>
 
@@ -129,20 +139,44 @@ $uname=$_SESSION["username"];
                     </div>
                     </div>
 
+                    <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Remarks</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12 input-group">
+                        <textarea class="form-control" name="rmk" placeholder="Put you Remarks. . .(200 charachers)" style="height:200px" onkeyup="countChar(this)"><?php 
+                            if (isset($_POST['rmkss']))
+                                echo $_POST['rmkss'];
+                        ?></textarea>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Escalate</label>
+                    <div class="col-md-8 col-sm-8 col-xs-12 input-group">
+                        <input type="checkbox" name="esc" value="1"><br>
+                    </div>
+                    </div>
+
                     <div class="ln_solid"></div>
+                    <div class="form-group">
                     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                    <button type="submit" class="btn btn-success">Confirm</button>
+                    <button type="submit" class="btn btn-success">Escalate / Close</button>
+                    </div>
                     </div>
 
                     </form>
                     <a href="tickets-T.php"><button>Back</button></a>
 					<?php
-					$t=@$_POST['sid'];
-					$ttt=@$_POST['spr'];
-					if($t!=`` && $ttt!=``)
+                    $t=@$_POST['sid'];
+					$tt=@$_POST['esc'];
+                    $ttt=@$_POST['spr'];
+					$tttt=@$_POST['rmk'];
+                    $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
+                    if($t!=`` && $ttt!=`` && $tt==``)
                     {
-					$con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-					$con->query("UPDATE issues SET status=\"Close\", resolved_on=NOW() WHERE id=$t");
+                        $con->query("UPDATE issues SET status=\"Close\", resolved_on=NOW(), remarks=\"$tttt\" WHERE id=$t");
+                    }
+                    elseif ($t!=`` && $ttt!=`` && $tt!=``) {
+                        $con->query("UPDATE issues SET escalated_on=NOW(), remarks=\"$tttt\", escalated=$tt, escalated_by=\"$uname\" WHERE id=$t");
                     }
 					?>
                   </div>

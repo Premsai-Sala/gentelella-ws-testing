@@ -51,6 +51,16 @@ while($row2 = mysqli_fetch_array($admindata))
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      function countChar(val) {
+        var len = val.value.length;
+        if (len >= 100) {
+          val.value = val.value.substring(0, 100);
+        } else {
+          $('#charNum').text(100 - len);
+        }
+      };
+    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -177,7 +187,7 @@ while($row2 = mysqli_fetch_array($admindata))
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Comments</label>
                     <div class="col-md-8 col-sm-8 col-xs-12 input-group">
-                    <textarea style="margin-left: 10px" class="form-control" name="comments" placeholder="Put you comments. . ." style="height:200px"></textarea>
+                    <textarea style="margin-left: 10px" class="form-control" name="comments" placeholder="Put you comments. . .(100 characters)" style="height:200px" onkeyup="countChar(this)"></textarea>
                     </div>
                     </div>
 

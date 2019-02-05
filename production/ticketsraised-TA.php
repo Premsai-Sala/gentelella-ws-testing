@@ -128,19 +128,19 @@ $uname=$_SESSION["username"];
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="problem" value="<?php echo $row1['problem'];?>"><?php echo $row1['problem'];?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["comm"]?>"><?php echo $row1['comm']?></td>
                         <!-- <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php //echo $row1["status"]?>"></td> -->
-                        <td><select name="as">
+                        <td><select class="form-control" name="as">
                           <?php echo $admin;?>
                           <option selected="selected" value="SelectTechnician">SelectTechnician</option>  
                           </select></td>
                         <td>
-                        <select name="pr">
+                        <select class="form-control" name="pr">
                           <option selected="selected" value="SetPriority">SetPriority</option> 
                         <option value=High>High</option>
                         <option value=Medium>Medium</option>
                         <option value=Low>Low</option>
                         </select>
                         </td>   
-                        <td><input type="submit" name="submit" value="Assign"></td>
+                        <td><input class="btn btn-primary btn-sm" type="submit" name="submit" value="Assign"></td>
 
                         </form>
                         </tr>

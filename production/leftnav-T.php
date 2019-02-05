@@ -14,6 +14,7 @@
         <ul class="nav child_menu">
           <li><a href="tickets-T.php">Active Tickets</a></li>
           <li><a href="ticketsresolved-T.php">Resolved Tickets</a></li>
+          <li><a href="escilated-T.php">Escilated Tickets</a></li>
           <!-- <li><a href="">Form Wizard</a></li>
           <li><a href="">Form Upload</a></li>
           <li><a href="">Form Buttons</a></li> -->
