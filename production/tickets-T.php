@@ -139,8 +139,6 @@ $uname=$_SESSION["username"];
                       }
                       ?>
                       </tbody>
-                        </form>
-                      </form>
                     </table>
                   </div>
                 </div>

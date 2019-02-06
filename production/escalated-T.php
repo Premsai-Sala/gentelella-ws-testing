@@ -120,8 +120,8 @@ $uname=$_SESSION["username"];
                       while($row1 = $result->fetch_assoc())
                       {
                         ?>
-                        <tr>
                         <form method="post" action="showticket-T.php">
+                        <tr>
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" name="id" value="<?php echo $row1['id'];?>"><?php echo $row1['id']; ?></td>
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="unname" value="<?php echo $row1['userid'];?>"><?php echo $row1['userid']?></td>
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="itemname" value="<?php echo $row1['itemid'];?>"><?php echo $row1['itemid']; ?></td>
@@ -133,14 +133,12 @@ $uname=$_SESSION["username"];
 
                         <!-- <td><input class="btn btn-sm btn-round btn-danger" type="submit" name="submit" value="Close"></td> -->
 
-                        </form>
                         </tr>
+                        </form>
                         <?php
                       }
                       ?>
                       </tbody>
-                        </form>
-                      </form>
                     </table>
                   </div>
                 </div>
