@@ -98,8 +98,10 @@ $uname=$_SESSION["username"];
                         <th>Item Name</th>
                         <th>Problem</th>
                         <th>Description</th>
-                        <th>Remarks</th>
-                        <th>Escalated On</th>
+                        <th>remark</th>
+                        <th>Priority</th>
+                        <!-- <th>Assign to</th> -->
+                        <th>action</th>
                         </tr>
                       </thead>
                       <!-- <form method="post"> -->
@@ -114,7 +116,7 @@ $uname=$_SESSION["username"];
                       {
                       $admin = $admin."<option value=$row2[1]>$row2[1]</option>";
                       }
-                      $result = $con->query("SELECT * FROM issues WHERE escalated_by=\"$uname\"");
+                      $result = $con->query("SELECT * FROM issues WHERE status=\"Open\" AND assign='$uname'");
                       while($row1 = $result->fetch_assoc())
                       {
                         ?>
@@ -125,8 +127,11 @@ $uname=$_SESSION["username"];
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="itemname" value="<?php echo $row1['itemid'];?>"><?php echo $row1['itemid']; ?></td>
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="problem" value="<?php echo $row1['problem'];?>"><?php echo $row1['problem'];?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["comm"]?>"><?php echo $row1['comm']?></td>
-                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["remarks"]?>"><?php echo $row1['remarks']?></td> 
-                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["escalatec_on"]?>"><?php echo $row1['escalated_on']?></td> 
+                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="rmkss" value="<?php echo $row1["remarks"]?>"><?php echo $row1['remarks']?></td>
+                        <!-- <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="rmkss" value="<?php //echo $row1["remarks"]?>"></td> -->
+                        <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["priority"]?>"><?php echo $row1['priority']?></td> 
+
+                        <td><input class="btn btn-sm btn-round btn-danger" type="submit" name="submit" value="Close"></td>
 
                         </form>
                         </tr>
