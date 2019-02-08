@@ -1,8 +1,8 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==0)
 {
-//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -100,15 +100,13 @@ $uname=$_SESSION["username"];
                         <th>Description</th>
                         <th>Assign to</th>
                         <th>Priority</th>
-                        <!-- <th>Status</th> -->
                         <th>Raised On</th>
                         </tr>
                       </thead>
                       <form method="post">
                       <tbody>
                       <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-                      $result = $con->query("SELECT * FROM issues WHERE status=\"Open\"");
+                      $result = $connection->query("SELECT * FROM issues WHERE status=\"Open\"");
                       while($row1 = $result->fetch_assoc())
                       {
                       echo "<tr>";
@@ -119,7 +117,6 @@ $uname=$_SESSION["username"];
                       echo "<td>".$row1['comm']."</td>";
                       echo "<td>".$row1['assign']."</td>";
                       echo "<td>".$row1['priority']."</td>";
-                      /*echo "<td>".$row1['status']."</td>";*/
                       echo "<td>".$row1['created_at']."</td>";
                       echo "</tr>";
                       }

@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
 //session_start();
@@ -104,20 +105,16 @@ $uname=$_SESSION["username"];
                         <th>Description</th>
                         <th>Assign to</th>
                         <th>Priority</th>
-                        <!-- <th>Status</th> -->
                         <th>Raised On</th>
                         </tr>
                       </thead>
                       <form method="post">
                       <tbody>
                       <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $t=$_POST['daf1'];
                       $tt=$_POST['dat1'];
                       $ttt=$_POST['as1'];
-                      //session_start();
-                      /*$result = $con->query("SELECT * FROM issues WHERE created_at >= CAST('2018-11-14' AS DATE) AND created_at <= CAST('2018-11-15' AS DATE)");*/
-                      $result = $con->query("SELECT * FROM issues WHERE (created_at BETWEEN '$t' AND '$tt') AND userid='$ttt'");
+                      $result = $connection->query("SELECT * FROM issues WHERE (created_at BETWEEN '$t' AND '$tt') AND userid='$ttt'");
                       while($row1 = $result->fetch_assoc())
                       {
                       echo "<tr>";
@@ -128,7 +125,6 @@ $uname=$_SESSION["username"];
                       echo "<td>".$row1['comm']."</td>";
                       echo "<td>".$row1['assign']."</td>";
                       echo "<td>".$row1['priority']."</td>";
-                      /*echo "<td>".$row1['status']."</td>";*/
                       echo "<td>".$row1['created_at']."</td>";
                       echo "</tr>";
                       }

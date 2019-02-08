@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
 $des=$_SESSION["designation"];
@@ -110,13 +111,12 @@ $uname=$_SESSION["username"];
                       <form method="post">
                       <tbody>
                       <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $t=$_POST['daf'];
                       $tt=$_POST['dat'];
                       $ttt=$_POST['as'];
                       //session_start();
                       /*$result = $con->query("SELECT * FROM issues WHERE created_at >= CAST('2018-11-14' AS DATE) AND created_at <= CAST('2018-11-15' AS DATE)");*/
-                      $result = $con->query("SELECT * FROM issues WHERE (created_at BETWEEN '$t' AND '$tt') AND assign='$ttt'");
+                      $result = $connection->query("SELECT * FROM issues WHERE (created_at BETWEEN '$t' AND '$tt') AND assign='$ttt'");
                       while($row1 = $result->fetch_assoc())
                       {
                       echo "<tr>";

@@ -1,50 +1,38 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
-//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
-/*require_once('authenticate.php');
-include 'leftnav-CCA.html';
-include 'topnav.html';*/
-$hostname = "localhost";
-$username = "itdb";
-$password = "Itm@2018";
-$databaseName = "test";
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 $query1 = "SELECT * FROM users";
-$usersdata = mysqli_query($connect, $query1);// for method 2
+$usersdata = mysqli_query($connection, $query1);
 @$users = "";
 while($row2 = mysqli_fetch_array($usersdata))
 {
     if (isset($_POST['userid']))
     {
       if ($row2[1]==$_POST['userid']) $s="SELECTED"; else $s="";
-      //$users = $users."<option value=`$row2[0]`>$row2[1]</option>";
       $users = $users."<option $s value=$row2[1]>$row2[1]</option>";
     }
     else
       $users = $users."<option value=$row2[1]>$row2[1]</option>";
 }
-//$query2 = "SELECT * FROM itemtypes";
 @$ttt=$_POST['userid'];
 $query2 = "SELECT typedesc from itemtypes JOIN items ON itemtypes.id=items.itemtypeid JOIN users ON items.userid=users.id where username=\"$ttt\"";
-$itemdata = mysqli_query($connect, $query2);// for method 2
+$itemdata = mysqli_query($connection, $query2);// for method 2
 $items = "";
 while($row2 = mysqli_fetch_array($itemdata))
 {
-    //$items = $items."<option value=`$row2[0]`>$row2[2]</option>";
     $items = $items."<option value=$row2[0]>$row2[0]</option>";
 }
 
 $query3 = "SELECT * FROM users where designation='0'";
-$admindata = mysqli_query($connect, $query3);// for method 2
+$admindata = mysqli_query($connection, $query3);// for method 2
 $admin = "";
 while($row2 = mysqli_fetch_array($admindata))
 {
-    //$admin = $admin."<option value=`$row2[0]`>$row2[1]</option>";
     $admin = $admin."<option value=$row2[1]>$row2[1]</option>";
 }
 ?>
@@ -204,22 +192,18 @@ while($row2 = mysqli_fetch_array($admindata))
                       $row2= $_POST["itemid"];
                       $row3= $_POST["problem"];
                       $row4= $_POST["comments"];
-                      /*$row5= $_POST["assign"];
-                      $row6= $_POST["priority"];*/
                       $row5= "Open";
                       $row6= "0";
 
                       $sql="INSERT INTO issues (userid,itemid,problem,comm,status,assign_status,created_at) VALUES ('$row1', '$row2', '$row3', '$row4', '$row5', '$row6', NOW())";
-                      $usersdata = mysqli_query($connect, $sql);
+                      $usersdata = mysqli_query($connection, $sql);
                       if($usersdata)
                           {
                             echo("<br>*Ticket raised successfully.");
-                              //header("Location: http://localhost/test-ws/production/un-resolved-CCA.php");
                           } 
                           else
                           {
                               echo("<br>*Failed to raise ticket. Please try it after some time.");
-                              //header("Location: http://localhost/authenticate/index.php");
                             }
                       }
                       ?>

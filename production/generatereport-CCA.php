@@ -1,8 +1,8 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
-//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -144,9 +144,8 @@ $uname=$_SESSION["username"];
               <div class="x_content">
                 <div class="container">
                   <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $query3 = "SELECT * FROM users where designation='2'";
-                      $admindata = mysqli_query($con, $query3);
+                      $admindata = mysqli_query($connection, $query3);
                       $admin = "";
                       while($row2 = mysqli_fetch_array($admindata))
                       {
@@ -222,9 +221,8 @@ $uname=$_SESSION["username"];
               <div class="x_content">
                 <div class="container">
                   <?php
-                      $connect = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $query1 = "SELECT * FROM users";
-                      $usersdata = mysqli_query($connect, $query1);// for method 2
+                      $usersdata = mysqli_query($connection, $query1);// for method 2
                       @$users = "";
                       while($row2 = mysqli_fetch_array($usersdata))
                       {

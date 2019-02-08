@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==1)
 {
 //session_start();
@@ -156,8 +157,7 @@ $uname=$_SESSION["username"];
                     $ttt1=@$_POST['sprt'];
                     if($t1!=`` && $tt1!=`` && $ttt1!=`` && $tt1!="SelectTechnician" && $ttt1!="SetPriority" )
                     {
-                    $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-                    $con->query("UPDATE issues SET assign=\"$tt1\", priority=\"$ttt1\" , escalated=0 WHERE id=$t1");
+                    $connection->query("UPDATE issues SET assign=\"$tt1\", priority=\"$ttt1\" , escalated=0 WHERE id=$t1");
                     }
                     ?>
                   </div>

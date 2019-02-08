@@ -1,4 +1,5 @@
 <?php
+require 'config-mysqli.php';
 $username = null;
 $password = null;
 
@@ -8,15 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST["username"];
     $password = $_POST["password"];
     
-    $conn = mysqli_connect("localhost","itdb","Itm@2018","test");
     $query="SELECT * FROM users WHERE username='".$username."' AND pass='".$password."'";
-    $result=mysqli_query($conn,$query);
+    $result=mysqli_query($connection,$query);
     $row=mysqli_fetch_assoc($result);   
     $user=$row["username"];
     $pass=$row["pass"];
     $designation=$row["designation"];
-
-    if($username == $user && $password == $pass) {
+  } 
+  if($username == $user && $password == $pass) {
       session_start();
       $_SESSION["username"] = $user;
       $_SESSION["designation"] = $designation;
@@ -24,12 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       header('Location: index.php');
     }
     else {
-      header('Location: login.php');
+      echo "<html>
+      <h3 align=\"center\" style=\"color:red; margin-top: 150px\">Incorrect username or password
+      <a href=\"login.php\">GO TO LOGIN PAGE</a></h3>
+      </html>";
     }
-    
-  } else {
-    header('Location: login.php');
-  }
 } else {
 ?>
 
@@ -90,48 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div>
                   <h1> ITM</h1>
-                  <p>©2018 All Rights Reserved. Privacy and Terms</p>
+                  <p>©2018-19 All Rights Reserved.</p>
                 </div>
               </d1iv>
             </form>
           </section>
         </div>
-
-        <!-- <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form >
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div> -->
       </div>
     </div>
   </body>

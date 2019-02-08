@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==2)
 {
 //session_start();
@@ -108,15 +109,14 @@ $uname=$_SESSION["username"];
                       <!-- <form method="post" action="showticket-TA.php"> -->
                       <tbody>
                       <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $query3 = "SELECT * FROM users where designation='2'";
-                      $admindata = mysqli_query($con, $query3);
+                      $admindata = mysqli_query($connection, $query3);
                       $admin = "";
                       while($row2 = mysqli_fetch_array($admindata))
                       {
                       $admin = $admin."<option value=$row2[1]>$row2[1]</option>";
                       }
-                      $result = $con->query("SELECT * FROM issues WHERE status=\"Open\" AND assign='$uname'");
+                      $result = $connection->query("SELECT * FROM issues WHERE status=\"Open\" AND assign='$uname'");
                       while($row1 = $result->fetch_assoc())
                       {
                         ?>

@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==2)
 {
 $des=$_SESSION["designation"];
@@ -169,13 +170,12 @@ $uname=$_SESSION["username"];
 					$tt=@$_POST['esc'];
                     $ttt=@$_POST['spr'];
 					$tttt=@$_POST['rmk'];
-                    $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                     if($t!=`` && $ttt!=`` && $tt==``)
                     {
-                        $con->query("UPDATE issues SET status=\"Close\", resolved_on=NOW(), remarks=\"$tttt\" WHERE id=$t");
+                        $connection->query("UPDATE issues SET status=\"Close\", resolved_on=NOW(), remarks=\"$tttt\" WHERE id=$t");
                     }
                     elseif ($t!=`` && $ttt!=`` && $tt!=``) {
-                        $con->query("UPDATE issues SET escalated_on=NOW(), remarks=\"$tttt\", escalated=$tt, escalated_by=\"$uname\" WHERE id=$t");
+                        $connection->query("UPDATE issues SET escalated_on=NOW(), remarks=\"$tttt\", escalated=$tt, escalated_by=\"$uname\" WHERE id=$t");
                     }
 					?>
                   </div>

@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==2)
 {
 //session_start();
@@ -100,23 +101,18 @@ $uname=$_SESSION["username"];
                         <th>Description</th>
                         <th>Resolven On</th>
                         <th>Remarks</th>
-                        <!-- <th>Assign to</th> -->
-                        <!-- <th>action</th> -->
                         </tr>
                       </thead>
-                      <!-- <form method="post"> -->
-                      <!-- <form method="post" action="showticket-TA.php"> -->
                       <tbody>
                       <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
                       $query3 = "SELECT * FROM users where designation='2'";
-                      $admindata = mysqli_query($con, $query3);
+                      $admindata = mysqli_query($connection, $query3);
                       $admin = "";
                       while($row2 = mysqli_fetch_array($admindata))
                       {
                       $admin = $admin."<option value=$row2[1]>$row2[1]</option>";
                       }
-                      $result = $con->query("SELECT * FROM issues WHERE status=\"Close\" AND assign='$uname' AND assign_status=\"1\"");
+                      $result = $connection->query("SELECT * FROM issues WHERE status=\"Close\" AND assign='$uname' AND assign_status=\"1\"");
                       while($row1 = $result->fetch_assoc())
                       {
                         ?>
@@ -129,9 +125,6 @@ $uname=$_SESSION["username"];
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["comm"]?>"><?php echo $row1['comm']?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["resolved_on"]?>"><?php echo $row1["resolved_on"]?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="pr" value="<?php echo $row1["remarks"]?>"><?php echo $row1['remarks']?></td> 
-
-                        <!-- <td><input type="submit" name="submit" value="Close"></td> -->
-
                         </form>
                         </tr>
                         <?php

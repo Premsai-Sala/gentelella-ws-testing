@@ -1,5 +1,6 @@
 <?php
 require_once('authenticate.php');
+require 'config-mysqli.php';
 if ($_SESSION["designation"]==1)
 {
 $des=$_SESSION["designation"];
@@ -103,8 +104,7 @@ $uname=$_SESSION["username"];
                       <form method="post">
                       <tbody>
                       <?php
-                      $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-                      $result = $con->query("SELECT * FROM issues WHERE status=\"Open\"AND assign IS NOT NULL AND assign<>\"\"");
+                      $result = $connection->query("SELECT * FROM issues WHERE status=\"Open\"AND assign IS NOT NULL AND assign<>\"\"");
                       while($row1 = $result->fetch_assoc())
                       {
                       echo "<tr>";
