@@ -13,6 +13,7 @@
       <li><a><i class="fa fa-edit"></i>Ticket<span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="raiseticket-CCA.php">Raise Ticket</a></li>
+          <li><a href="tickets-T.php">Active Tickets</a></li>
           <li><a href="un-resolved-CCA.php">Un-resolved Tickets</a></li>
           <li><a href="resolved-tickets.php">Resolved Tickets</a></li>
           <!-- <li><a href="">Form Wizard</a></li>

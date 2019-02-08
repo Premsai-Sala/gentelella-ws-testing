@@ -150,7 +150,7 @@ $uname=$_SESSION["username"];
                     $ttt=@$_POST['spr'];
                     if($t!=`` && $tt!=`` && $ttt!=`` && $tt!="SelectTechnician" && $ttt!="SetPriority" )
                     {
-                    $connnection->query("UPDATE issues SET assign=\"$tt\", priority=\"$ttt\", assign_status=\"1\" WHERE id=$t");
+                    $connection->query("UPDATE issues SET assign=\"$tt\", priority=\"$ttt\", assign_status=\"1\" WHERE id=$t");
                     }
                     ?>
                   </div>

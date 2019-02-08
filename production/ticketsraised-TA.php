@@ -54,7 +54,6 @@ $uname=$_SESSION["username"];
         <div class="profile_info">
         <span>Welcome,</span>
         <h2><?php echo $uname; ?></h2>  
-        <!-- <h2>Call Center Agent</h2> -->
         </div>
         </div>
       <!-- /menu profile quick info -->

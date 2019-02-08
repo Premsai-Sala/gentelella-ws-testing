@@ -12,7 +12,8 @@
       </li> -->
       <li><a><i class="fa fa-edit"></i>Ticket<span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="raiseticket-CCA.php">Raise Tickets</a></li>
+          <li><a href="raiseticket-CCA.php">Raise Ticket</a></li>
+          <li><a href="tickets-T.php">Active Tickets</a></li>
           <li><a href="ticketsraised-TA.php">Un-assigned Tickets</a></li>
           <li><a href="assignedtickets-TA.php">Assigned Tickets</a></li>
           <li><a href="resolved-tickets.php">Resolved Tickets</a></li>
