@@ -97,15 +97,12 @@ $uname=$_SESSION["username"];
                         <th>User Name</th>
                         <th>Item Name</th>
                         <th>Problem</th>
-                       <!--  <th>Status</th> -->
                         <th>Description</th>
                         <th>Assign to</th>
                         <th>Priority</th>
                         <th>action</th>
                         </tr>
                       </thead>
-                      <!-- <form method="post"> -->
-                      <!-- <form method="post" action="showticket-TA.php"> -->
                       <tbody>
                       <?php
                       $con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
@@ -127,7 +124,6 @@ $uname=$_SESSION["username"];
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="itemname" value="<?php echo $row1['itemid'];?>"><?php echo $row1['itemid']; ?></td>
                         <td><input type="text" style="visibility:hidden; border: 0px; height: 0px; width:0px;" readonly name="problem" value="<?php echo $row1['problem'];?>"><?php echo $row1['problem'];?></td>
                         <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php echo $row1["comm"]?>"><?php echo $row1['comm']?></td>
-                        <!-- <td><input type="text" style="visibility:hidden;border: 0px;height:25px; width:0px;" readonly name="comm" value="<?php //echo $row1["status"]?>"></td> -->
                         <td><select class="form-control" name="as">
                           <?php echo $admin;?>
                           <option selected="selected" value="SelectTechnician">SelectTechnician</option>  
@@ -156,14 +152,6 @@ $uname=$_SESSION["username"];
               </div>
             </div>
     <!-- /page content -->
-    <!-- <?php 
-      //$t=$_POST['id'];
-      //$tt=$_POST['as'];
-      //$ttt=$_POST['pr'];
-      //if ($t!="" && $tt!="" && $ttt!="")
-      //$con = new mysqli('localhost' , 'itdb' , 'Itm@2018' , 'test');
-      //$con->query("UPDATE issues SET assign=\"$tt\", priority=\"$ttt\", assign_status=\"1\" WHERE id=$t");
-    ?> -->
 
     <!-- footer content -->
     <footer>

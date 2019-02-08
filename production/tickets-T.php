@@ -93,15 +93,15 @@ $uname=$_SESSION["username"];
                     <table id="datatable-fixed-header" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>User Name</th>
                         <th>Item Name</th>
                         <th>Problem</th>
                         <th>Description</th>
-                        <th>remark</th>
+                        <th>Remark</th>
                         <th>Priority</th>
                         <!-- <th>Assign to</th> -->
-                        <th>action</th>
+                        <th>Action</th>
                         </tr>
                       </thead>
                       <!-- <form method="post"> -->

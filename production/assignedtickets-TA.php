@@ -2,7 +2,6 @@
 require_once('authenticate.php');
 if ($_SESSION["designation"]==1)
 {
-//session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
 ?>
@@ -114,11 +113,10 @@ $uname=$_SESSION["username"];
                       echo "<td>".$row1['itemid']."</td>";
                       echo "<td>".$row1['assign']."</td>";
                       echo "<td>".$row1['priority']."</td>";
-                      /*echo "<td>".$row1['status']."</td>";*/
                       echo "<td>".$row1['created_at']."</td>";
-                        echo "<td>".$row1['problem']."</td>";
-                        echo "<td>".$row1['comm']."</td>";
-                        echo "<td>".$row1['remarks']."</td>";
+                      echo "<td>".$row1['problem']."</td>";
+                      echo "<td>".$row1['comm']."</td>";
+                      echo "<td>".$row1['remarks']."</td>";
                       echo "</tr>";
                       }
                       ?> 
