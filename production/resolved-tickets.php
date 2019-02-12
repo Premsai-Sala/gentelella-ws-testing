@@ -103,6 +103,7 @@ $uname=$_SESSION["username"];
                         <th>Problem</th>
                         <th>Description</th>
                         <th>Assign to</th>
+                        <th>Remarks</th>
                         <th>Priority</th>
                         <th>Raised On</th>
                         </tr>
@@ -120,6 +121,7 @@ $uname=$_SESSION["username"];
                       echo "<td>".$row1['problem']."</td>";
                       echo "<td>".$row1['comm']."</td>";
                       echo "<td>".$row1['assign']."</td>";
+                      echo "<td>".$row1['remarks']."</td>";
                       echo "<td>".$row1['priority']."</td>";
                       echo "<td>".$row1['created_at']."</td>";
                       echo "</tr>";

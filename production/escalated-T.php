@@ -110,7 +110,7 @@ $uname=$_SESSION["username"];
                       <tbody>
                       <?php
                       $query3 = "SELECT * FROM users where designation='2'";
-                      $admindata = mysqli_query($con, $query3);
+                      $admindata = mysqli_query($connection, $query3);
                       $admin = "";
                       $result = $connection->query("SELECT * FROM issues WHERE escalated_by=\"$uname\"");
                       while($row1 = $result->fetch_assoc())

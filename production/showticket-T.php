@@ -1,7 +1,7 @@
 <?php
 require_once('authenticate.php');
 require 'config-mysqli.php';
-if ($_SESSION["designation"]==2)
+if ($_SESSION["designation"]==2 || $_SESSION["designation"]==0 || $_SESSION["designation"]==1)
 {
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];

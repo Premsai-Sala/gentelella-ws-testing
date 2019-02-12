@@ -1,8 +1,10 @@
 <?php
 require_once('authenticate.php');
+require_once('online.php');
 //session_start();
 $des=$_SESSION["designation"];
 $uname=$_SESSION["username"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +90,8 @@ $uname=$_SESSION["username"];
     <!-- footer content -->
     <footer>
       <div class="pull-right">
-        ITM Group of Institutions <a href="https://www.itm.edu/">(Website)</a>
+        ITM Group of Institutions <a href="https://www.itm.edu/">(Website) | No.of active users</a>
+        <?php echo online::who(); ?>
       </div>
       <div class="clearfix"></div>
     </footer>
