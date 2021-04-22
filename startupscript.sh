@@ -1,3 +1,4 @@
 #!/bin/bash
-service apache2 reload
-ls -l /var/www/html > ll.log
+date > ll.log
+service apache2 reload >> ll.log
+ls -l /var/www/html >> ll.log
