@@ -5,6 +5,6 @@ files:
     destination: /var/www/html/
 hooks:
   ApplicationStart:
-    - location: /scripts/startupscript.sh
+    - location: /startupscript.sh
       timeout: 300
       runas: root
